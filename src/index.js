@@ -1,0 +1,3 @@
+/**
+ * pretty log entry file
+ */
