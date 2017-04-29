@@ -32,12 +32,14 @@
     "format": "prettier-eslint --write \"src/**/*.js\"",
     "test": "jest",
     "test:coverage": "jest --coverage",
+    "report-coverage": "cat ./tools/jest/coverage-reports/lcov.info | codecov",
     "validate": "npm-run-all --parallel format test"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-jest": "^19.0.0",
     "babel-preset-es2015": "^6.24.1",
+    "codecov": "^2.1.0",
     "husky": "^0.13.3",
     "jest-cli": "^19.0.2",
     "lint-staged": "^3.4.1",
