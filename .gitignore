@@ -2,3 +2,8 @@ node_modules
 coverage
 dist
 .nyc_output
+npm-debug.log
+
+# node test coverage reports
+tools/jest/coverage-reports/*
+!tools/jest/coverage-reports/.gitkeep

@@ -23,10 +23,12 @@
     "npm": "3.x"
   },
   "scripts": {
+    "build": "",
     "lint": "eslint .",
     "precommit": "lint-staged",
     "format": "prettier-eslint --write \"src/**/*.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "lint-staged": {
     "*.js": [
@@ -35,10 +37,35 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
-    "eslint-config-kentcdodds": "^12.2.1",
+    "babel-jest": "^19.0.0",
+    "babel-preset-es2015": "^6.24.1",
     "husky": "^0.13.3",
+    "jest-cli": "^19.0.2",
     "lint-staged": "^3.4.1",
-    "prettier-eslint-cli": "^3.4.2"
+    "prettier-eslint-cli": "^3.4.2",
+    "regenerator-runtime": "^0.10.5"
+  },
+  "babel": {
+      "presets": [
+        "es2015"
+      ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "rules": {}
+  },
+  "jest": {
+    "coverageDirectory": "./tools/jest/coverage-reports",
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    }
   }
 }

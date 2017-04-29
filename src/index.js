@@ -198,6 +198,7 @@ const error = makeLogger("ERROR");
  * exports
 */
 const logger = {
+  VERSION,
   __info: info,
   __debug: debug,
   __warn: warn,
