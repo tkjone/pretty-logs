@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/tkjone/pretty-logs"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "logging",
     "logs",
@@ -32,6 +35,7 @@
     "validate": "npm-run-all --parallel format test"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-jest": "^19.0.0",
     "babel-preset-es2015": "^6.24.1",
     "husky": "^0.13.3",
