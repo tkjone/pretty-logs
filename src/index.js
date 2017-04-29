@@ -36,17 +36,17 @@
  */
 
 // current version of this logging library
-const VERSION = "0.0.1";
+const VERSION = '0.0.1';
 
 /**
  * available log colors - purely a style thing and yes, the hex codes will not
  * work inside of the node environments.
  */
 const COLORS = {
-  PALE_VIOLET_RED: "#2724FA",
-  TRADE_WIND_GREEN: "#007867",
-  BLUSH_PINK: "#E69022",
-  IRIS_BLUE: "#FC1052"
+  PALE_VIOLET_RED: '#2724FA',
+  TRADE_WIND_GREEN: '#007867',
+  BLUSH_PINK: '#E69022',
+  IRIS_BLUE: '#FC1052',
 };
 
 /**
@@ -55,10 +55,10 @@ const COLORS = {
  * LEVEL.INFO[0] // 'info'
 */
 const LEVEL = {
-  INFO: ["info", 0, COLORS.PALE_VIOLET_RED],
-  DEBUG: ["debug", 10, COLORS.TRADE_WIND_GREEN],
-  WARN: ["warn", 20, COLORS.BLUSH_PINK],
-  ERROR: ["error", 30, COLORS.IRIS_BLUE]
+  INFO: ['info', 0, COLORS.PALE_VIOLET_RED],
+  DEBUG: ['debug', 10, COLORS.TRADE_WIND_GREEN],
+  WARN: ['warn', 20, COLORS.BLUSH_PINK],
+  ERROR: ['error', 30, COLORS.IRIS_BLUE],
 };
 
 /**
@@ -106,7 +106,7 @@ function getLevelColor(level) {
  * @return {boolean}
 */
 function isNode() {
-  return typeof module !== "undefined" && typeof module.exports !== "undefined";
+  return typeof module !== 'undefined' && typeof module.exports !== 'undefined';
 }
 
 /**
@@ -114,7 +114,7 @@ function isNode() {
  * @return {boolean}
 */
 function isBrowser() {
-  return typeof window !== "undefined";
+  return typeof window !== 'undefined';
 }
 
 /**
@@ -153,7 +153,7 @@ function log(levelName, category, msg, data) {
   const formattedGroupMsg = formatMsg(groupMsg, lvlColor);
 
   // turn the msg into an object for cleaner reading and machine friendliness
-  const logMsg = { category, msg, data };
+  const logMsg = {category, msg, data};
   const logMsgAsJson = JSON.stringify(logMsg);
 
   // log to the console
@@ -189,10 +189,10 @@ function makeLogger(logName, ...argNames) {
   };
 }
 
-const info = makeLogger("INFO");
-const debug = makeLogger("DEBUG");
-const warn = makeLogger("WARN");
-const error = makeLogger("ERROR");
+const info = makeLogger('INFO');
+const debug = makeLogger('DEBUG');
+const warn = makeLogger('WARN');
+const error = makeLogger('ERROR');
 
 /**
  * exports
@@ -202,7 +202,7 @@ const logger = {
   __info: info,
   __debug: debug,
   __warn: warn,
-  __error: error
+  __error: error,
 };
 
 export default logger;

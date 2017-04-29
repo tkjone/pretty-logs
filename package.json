@@ -23,18 +23,13 @@
     "npm": "3.x"
   },
   "scripts": {
-    "build": "",
-    "lint": "eslint .",
-    "precommit": "lint-staged",
+    "prebuild": "rimraf dist",
+    "build": "babel --out-dir dist --ignore *.test.js src",
+    "precommit": "npm run validate",
     "format": "prettier-eslint --write \"src/**/*.js\"",
     "test": "jest",
-    "test:coverage": "jest --coverage"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "git add"
-    ]
+    "test:coverage": "jest --coverage",
+    "validate": "npm-run-all --parallel format test"
   },
   "devDependencies": {
     "babel-jest": "^19.0.0",
@@ -42,13 +37,15 @@
     "husky": "^0.13.3",
     "jest-cli": "^19.0.2",
     "lint-staged": "^3.4.1",
+    "npm-run-all": "^4.0.2",
     "prettier-eslint-cli": "^3.4.2",
-    "regenerator-runtime": "^0.10.5"
+    "regenerator-runtime": "^0.10.5",
+    "rimraf": "^2.6.1"
   },
   "babel": {
-      "presets": [
-        "es2015"
-      ]
+    "presets": [
+      "es2015"
+    ]
   },
   "eslintConfig": {
     "env": {
