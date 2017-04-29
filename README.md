@@ -20,6 +20,6 @@ I am always happy to have people contribute to this project.  Please start by re
 
 ### Development
 
-After you have cloned this repo and installed the npm directories, it is a good practice to run `npm run validate`.  This script is going to run prettier and the tests.
+After you have cloned this repo and installed the npm dependencies, it is a good practice to run `npm run validate`.  This script is going to run prettier and the tests.
 
 We also have a pre-commit git hook, which runs when you run `git commit` locally.  At this point, prettier is going to run and write in place. Big thanks to [husky](https://github.com/typicode/husky) which help make this process very easy.
