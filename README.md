@@ -1,5 +1,6 @@
 # Pretty Logs
 
+[![Build Status](https://travis-ci.org/tkjone/pretty-logs.svg?branch=master)](https://travis-ci.org/tkjone/pretty-logs)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 Welcome to `pretty-logs`.  `pretty-logs` is a JavaScript logging tool.
