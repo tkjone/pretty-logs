@@ -2,7 +2,7 @@
   "name": "pretty-logs",
   "version": "0.1.0",
   "description": "Welcome to pretty-logs.  A logging tool to help developers create more informative logs.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/tkjone/pretty-logs"
