@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "description": "Welcome to pretty-logs.  A logging tool to help developers create more informative logs.",
   "main": "src/index.js",
-  "scripts": {
-    "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/tkjone/pretty-logs"
@@ -26,8 +22,23 @@
     "node": "6.x",
     "npm": "3.x"
   },
+  "scripts": {
+    "lint": "eslint .",
+    "precommit": "lint-staged",
+    "format": "prettier-eslint --write \"src/**/*.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "eslint": "^3.19.0",
-    "eslint-config-kentcdodds": "^12.2.1"
+    "eslint-config-kentcdodds": "^12.2.1",
+    "husky": "^0.13.3",
+    "lint-staged": "^3.4.1",
+    "prettier-eslint-cli": "^3.4.2"
   }
 }

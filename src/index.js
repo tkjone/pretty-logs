@@ -31,23 +31,22 @@
  *       const VERSION = require('../package.json').version;
  */
 
-
 /**
  * Contstants
  */
 
 // current version of this logging library
-const VERSION = '0.0.1';
+const VERSION = "0.0.1";
 
 /**
  * available log colors - purely a style thing and yes, the hex codes will not
  * work inside of the node environments.
  */
 const COLORS = {
-  PALE_VIOLET_RED  : '#2724FA',
-  TRADE_WIND_GREEN : '#007867',
-  BLUSH_PINK       : '#E69022',
-  IRIS_BLUE        : '#FC1052',
+  PALE_VIOLET_RED: "#2724FA",
+  TRADE_WIND_GREEN: "#007867",
+  BLUSH_PINK: "#E69022",
+  IRIS_BLUE: "#FC1052"
 };
 
 /**
@@ -56,18 +55,17 @@ const COLORS = {
  * LEVEL.INFO[0] // 'info'
 */
 const LEVEL = {
-  INFO  : ['info',  0,  COLORS.PALE_VIOLET_RED],
-  DEBUG : ['debug', 10, COLORS.TRADE_WIND_GREEN],
-  WARN  : ['warn',  20, COLORS.BLUSH_PINK],
-  ERROR : ['error', 30, COLORS.IRIS_BLUE],
-}
+  INFO: ["info", 0, COLORS.PALE_VIOLET_RED],
+  DEBUG: ["debug", 10, COLORS.TRADE_WIND_GREEN],
+  WARN: ["warn", 20, COLORS.BLUSH_PINK],
+  ERROR: ["error", 30, COLORS.IRIS_BLUE]
+};
 
 /**
  * logging system default level - which levels to show in console
  * @type {number}
 */
 const DEFAULT_LEVEL = getLevelValue(LEVEL.INFO);
-
 
 // Helpers
 // ============================================================================
@@ -107,19 +105,16 @@ function getLevelColor(level) {
  * check whether or not the environment is node
  * @return {boolean}
 */
-function isNode () {
-  return (
-    typeof module !== 'undefined' &&
-    typeof module.exports !== 'undefined'
-  )
+function isNode() {
+  return typeof module !== "undefined" && typeof module.exports !== "undefined";
 }
 
 /**
  * check whether or not the environment is the browser
  * @return {boolean}
 */
-function isBrowser () {
-  return (typeof window !== 'undefined')
+function isBrowser() {
+  return typeof window !== "undefined";
 }
 
 /**
@@ -129,9 +124,9 @@ function isBrowser () {
  * @return {string}
 */
 function formatMsg(msg, levelColor) {
-  const theMsg    = `%c ${msg}`;
-  const theStyles = `color: ${levelColor}; font-weight: bold;`
-  const formattedMsg = [theMsg, theStyles]
+  const theMsg = `%c ${msg}`;
+  const theStyles = `color: ${levelColor}; font-weight: bold;`;
+  const formattedMsg = [theMsg, theStyles];
 
   return formattedMsg;
 }
@@ -148,14 +143,13 @@ function formatMsg(msg, levelColor) {
  * @example log('INFO', 'API', 'This is an API request', {...});
 */
 function log(levelName, category, msg, data) {
-
   /**
    * the following will generate a message that looks like this:
    * [ info ] - API - Thu Jan 05 2017 16:22:08 GMT-0500 (EST)
   */
   const timestamp = new Date();
-  const lvlColor  = getLevelColor(LEVEL[levelName]);
-  const groupMsg  = `[${levelName}] - ${category} - ${timestamp}`;
+  const lvlColor = getLevelColor(LEVEL[levelName]);
+  const groupMsg = `[${levelName}] - ${category} - ${timestamp}`;
   const formattedGroupMsg = formatMsg(groupMsg, lvlColor);
 
   // turn the msg into an object for cleaner reading and machine friendliness
@@ -169,7 +163,6 @@ function log(levelName, category, msg, data) {
     console.groupEnd();
   }
 }
-
 
 /**
  * This is a helper method to reduce boilerplate.  The idea is that we use this
@@ -186,7 +179,6 @@ function log(levelName, category, msg, data) {
 */
 
 function makeLogger(logName, ...argNames) {
-
   return function(category, message, data, ...argNames) {
     const levelValue = getLevelValue(LEVEL[logName]);
     const isActiveLogLevel = DEFAULT_LEVEL <= levelValue;
@@ -194,23 +186,22 @@ function makeLogger(logName, ...argNames) {
     if (isActiveLogLevel) {
       log(logName, category, message, data);
     }
-  }
-
+  };
 }
 
-const info  = makeLogger('INFO');
-const debug = makeLogger('DEBUG');
-const warn  = makeLogger('WARN');
-const error = makeLogger('ERROR');
+const info = makeLogger("INFO");
+const debug = makeLogger("DEBUG");
+const warn = makeLogger("WARN");
+const error = makeLogger("ERROR");
 
 /**
  * exports
 */
 const logger = {
-  __info  : info,
-  __debug : debug,
-  __warn  : warn,
-  __error : error,
-}
+  __info: info,
+  __debug: debug,
+  __warn: warn,
+  __error: error
+};
 
 export default logger;
