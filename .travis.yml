@@ -9,6 +9,8 @@ branches:
     - master
 notifications:
   email: false
+before_script:
+  - npm prune
 script:
   - npm run validate
 after_success:
