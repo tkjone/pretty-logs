@@ -36,7 +36,7 @@
  */
 
 // current version of this logging library
-const VERSION = '0.1.0';
+const VERSION = '0.0.1';
 
 /**
  * available log colors - purely a style thing and yes, the hex codes will not
