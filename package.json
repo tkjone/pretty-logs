@@ -34,7 +34,8 @@
     "test:coverage": "jest --coverage",
     "report-coverage": "cat ./tools/jest/coverage-reports/lcov.info | codecov",
     "validate": "npm-run-all --parallel format test:coverage",
-    "release": "semantic-release pre && npm publish && semantic-release post"
+    "generate-changelog": "github-changes -o tkjone -r pretty-logs -n ${npm_package_version} -a",
+    "release": "npm publish"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -47,8 +48,7 @@
     "npm-run-all": "^4.0.2",
     "prettier-eslint-cli": "^3.4.2",
     "regenerator-runtime": "^0.10.5",
-    "rimraf": "^2.6.1",
-    "semantic-release": "^6.3.2"
+    "rimraf": "^2.6.1"
   },
   "babel": {
     "presets": [
