@@ -1,6 +1,6 @@
 {
   "name": "pretty-logs",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "description": "Welcome to pretty-logs.  A logging tool to help developers create more informative logs.",
   "main": "dist/index.js",
   "repository": {
@@ -33,7 +33,8 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "report-coverage": "cat ./tools/jest/coverage-reports/lcov.info | codecov",
-    "validate": "npm-run-all --parallel format test:coverage"
+    "validate": "npm-run-all --parallel format test:coverage",
+    "release": "semantic-release pre && npm publish && semantic-release post"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -46,7 +47,8 @@
     "npm-run-all": "^4.0.2",
     "prettier-eslint-cli": "^3.4.2",
     "regenerator-runtime": "^0.10.5",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "semantic-release": "^6.3.2"
   },
   "babel": {
     "presets": [
