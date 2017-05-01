@@ -1,5 +1,10 @@
 ## Change Log
 
+### 0.1.2 (2017/05/01 00:13 +00:00)
+- [114fae8](https://github.com/tkjone/pretty-logs/commit/114fae889842a59b635ae7c49452686cafa07141) docs(contributing) - Initialize commit conventions (@tkjone)
+- [2e2a207](https://github.com/tkjone/pretty-logs/commit/2e2a2073b350d5cbc95f10d7ca45a20d5ff9526e) Docs - Added patch increment + notes section (@tkjone)
+- [55efd90](https://github.com/tkjone/pretty-logs/commit/55efd9000c6ed0963e0a39b35bf5625327e93d52) 0.1.1 (@tkjone)
+
 ### 0.1.1 (2017/05/01 00:03 +00:00)
 - [114fae8](https://github.com/tkjone/pretty-logs/commit/114fae889842a59b635ae7c49452686cafa07141) docs(contributing) - Initialize commit conventions (@tkjone)
 - [2e2a207](https://github.com/tkjone/pretty-logs/commit/2e2a2073b350d5cbc95f10d7ca45a20d5ff9526e) Docs - Added patch increment + notes section (@tkjone)
