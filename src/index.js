@@ -189,20 +189,16 @@ function makeLogger(logName, ...argNames) {
   };
 }
 
-const info = makeLogger('INFO');
-const debug = makeLogger('DEBUG');
-const warn = makeLogger('WARN');
-const error = makeLogger('ERROR');
+export const logInfo = makeLogger('INFO');
+export const logDebug = makeLogger('DEBUG');
+export const logWarn = makeLogger('WARN');
+export const logError = makeLogger('ERROR');
 
 /**
  * exports
 */
 const logger = {
   VERSION,
-  __info: info,
-  __debug: debug,
-  __warn: warn,
-  __error: error,
 };
 
 export default logger;
