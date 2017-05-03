@@ -15,12 +15,12 @@
  * how we log.
  *
  * This logging library supports latest browsers.  It will be very easy to make
- * it node compatible, but for the time being, we are focusing this as
+ * it node compatible, but we are focusing this as
  * a front-end tool for the time being
  *
  * the log levels are as follows:
  *
- * info  : interesting to support staff - read like prose
+ * info  : interesting to support stuff - read like prose
  * debug : interesting to developers - read in a way that is helpful
  * warn  : tell us a potential mistake we have made and how to resolve
  * error : tell us about a mistake that has happened and how to resolve
