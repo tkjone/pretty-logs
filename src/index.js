@@ -158,7 +158,7 @@ function log(levelName, category, msg, data) {
 
   // log to the console
   if (isBrowser) {
-    console.groupCollapsed.apply(console, formattedGroupMsg);
+    console.groupCollapsed(...formattedGroupMsg);
     console.log(logMsg);
     console.groupEnd();
   }
@@ -170,7 +170,9 @@ function log(levelName, category, msg, data) {
  * for example, if you create log = makeLogger('LOG') you can then call it like
  * this:
  *
- * @example log('INFO', 'API', 'This is an API request', {...});
+ * @example
+ *  const logInfo = makeLogger('INFO');
+ *  logInfo('API', 'This is an API request', {...});
  *
  * this is going to be an internal tool, the enduser will only be responsible
  * for creating some additional log levels if needed and then we will handle
@@ -178,8 +180,8 @@ function log(levelName, category, msg, data) {
  * as it make this library very much data driven.
 */
 
-function makeLogger(logName, ...argNames) {
-  return function(category, message, data, ...argNames) {
+function makeLogger(logName) {
+  return function(category, message, data) {
     const levelValue = getLevelValue(LEVEL[logName]);
     const isActiveLogLevel = DEFAULT_LEVEL <= levelValue;
 
