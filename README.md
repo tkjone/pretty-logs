@@ -31,6 +31,12 @@ npm install pretty-logs
 
 To be written...
 
+```js
+import { logError } from 'pretty-logs';
+
+logError('Auth', 'Login failed', { email: user.email });
+```
+
 ## Motivation
 
 This library was created because I became tired of moving my custom rolled logging library from project-to-project.
