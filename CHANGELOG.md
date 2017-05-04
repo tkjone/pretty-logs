@@ -1,5 +1,9 @@
 ## Change Log
 
+### 0.1.4 (2017/05/04 13:14 +00:00)
+- this version bump was required because dist was not built :(
+- [726fb6e](https://github.com/tkjone/pretty-logs/commit/726fb6e93c1a0f24f884aff4edbd5b45516b9906) chore(versioning): - Update Changelog
+
 ### 0.1.3 (2017/05/04 13:03 +00:00)
 - [0821d51](https://github.com/tkjone/pretty-logs/commit/0821d5120348053d11bf39c33679773ec8df96d7) #1 refactor(logger): Remove unused args (@skidding)
 - [1f4344f](https://github.com/tkjone/pretty-logs/commit/1f4344fc1763b9f02ff3ff281438b6e6f88d4fd8) #1 fix(style): Use correct ESLint parser options (@skidding)
