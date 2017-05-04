@@ -1,5 +1,12 @@
 ## Change Log
 
+### 0.1.3 (2017/05/04 13:03 +00:00)
+- [0821d51](https://github.com/tkjone/pretty-logs/commit/0821d5120348053d11bf39c33679773ec8df96d7) #1 refactor(logger): Remove unused args (@skidding)
+- [1f4344f](https://github.com/tkjone/pretty-logs/commit/1f4344fc1763b9f02ff3ff281438b6e6f88d4fd8) #1 fix(style): Use correct ESLint parser options (@skidding)
+- [a02b9cd](https://github.com/tkjone/pretty-logs/commit/a02b9cd4d82cb45f1cb33f5a052a99a83ad1af86) #1 refactor(api): Export independent loggers (@skidding)
+- [7f6e547](https://github.com/tkjone/pretty-logs/commit/7f6e5471156491e5ed093ab79202e9a24f3e1db6) #1 docs(typos) (@skidding)
+- [19e66a5](https://github.com/tkjone/pretty-logs/commit/19e66a54581921da3940428578586f4eda69854a) #1 docs(usage): Minimal usage section (@skidding)
+
 ### 0.1.2 (2017/05/01 00:13 +00:00)
 - [114fae8](https://github.com/tkjone/pretty-logs/commit/114fae889842a59b635ae7c49452686cafa07141) docs(contributing) - Initialize commit conventions (@tkjone)
 - [2e2a207](https://github.com/tkjone/pretty-logs/commit/2e2a2073b350d5cbc95f10d7ca45a20d5ff9526e) Docs - Added patch increment + notes section (@tkjone)

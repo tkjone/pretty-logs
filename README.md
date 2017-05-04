@@ -49,6 +49,12 @@ I am always happy to have people contribute to this project.  Please start by re
 
 ## Development
 
+If you intend on running the `generate-changelog` command you will need to install `github-changes` globally first:
+
+```bash
+npm install github-changes -g
+```
+
 After you have cloned this repo and installed the npm dependencies, it is a good practice to run `npm run validate`.  This script is going to run prettier and the tests.
 
 ### Commit Message Conventions
