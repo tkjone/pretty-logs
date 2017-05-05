@@ -1,5 +1,8 @@
 ## Change Log
 
+### 0.1.5 (2017/05/05 00:09 +00:00)
+- [26d13fa](https://github.com/tkjone/pretty-logs/commit/26d13fa5fabfdbcbc47594cf5eea304d655198eb) #3 fix(engines): Remove engines from package.json
+
 ### 0.1.4 (2017/05/04 13:14 +00:00)
 - this version bump was required because dist was not built :(
 - [726fb6e](https://github.com/tkjone/pretty-logs/commit/726fb6e93c1a0f24f884aff4edbd5b45516b9906) chore(versioning): - Update Changelog
