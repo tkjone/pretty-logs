@@ -1,5 +1,8 @@
 ## Change Log
 
+### 0.1.6 (2017/05/05 00:29 +00:00)
+- [7b3188b](https://github.com/tkjone/pretty-logs/commit/7b3188bf1beaee1d2bb39edb1c4c5ef4d768cdbc) Refactor(build): Add webpack for prod builds
+
 ### 0.1.5 (2017/05/05 00:09 +00:00)
 - [26d13fa](https://github.com/tkjone/pretty-logs/commit/26d13fa5fabfdbcbc47594cf5eea304d655198eb) #3 fix(engines): Remove engines from package.json
 
