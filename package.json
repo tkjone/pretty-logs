@@ -21,10 +21,6 @@
   "homepage": "https://github.com/tkjone/pretty-logs#readme",
   "author": "tkjone <tm.mattacchione@gmail.com> (http://thomasmattacchione.com)",
   "license": "MIT",
-  "engines": {
-    "node": "6.x",
-    "npm": "3.x"
-  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "babel --out-dir dist --ignore *.test.js src",
