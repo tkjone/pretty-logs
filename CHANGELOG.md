@@ -1,6 +1,11 @@
 ## Change Log
 
+### 0.1.7 (2017/05/06 14:34 +00:00)
+- Resolves a build issue introduced in version 1.7
+- [e81da46](https://github.com/tkjone/pretty-logs/commit/e81da461054abf8c61665730f7833566a3e69c66) cleanup(ci/cd): Resolve travis failing
+
 ### 0.1.6 (2017/05/05 00:29 +00:00)
+- Watrning: Never use this version...broken.
 - [7b3188b](https://github.com/tkjone/pretty-logs/commit/7b3188bf1beaee1d2bb39edb1c4c5ef4d768cdbc) Refactor(build): Add webpack for prod builds
 
 ### 0.1.5 (2017/05/05 00:09 +00:00)
