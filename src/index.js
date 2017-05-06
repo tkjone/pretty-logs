@@ -186,10 +186,6 @@ function makeLogger(logName) {
     const isActiveLogLevel = DEFAULT_LEVEL <= levelValue;
 
     if (isActiveLogLevel) {
-      console.log(logName);
-      console.log(category);
-      console.log(message);
-      console.log(data);
       log(logName, category, message, data);
     }
   };

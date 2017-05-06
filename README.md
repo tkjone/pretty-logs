@@ -29,13 +29,20 @@ npm install pretty-logs
 
 ## Usage
 
-To be written...
-
 ```js
 import { logError } from 'pretty-logs';
 
 logError('Auth', 'Login failed', { email: user.email });
 ```
+
+We provide the following log levels
+
+```js
+import { logInfo, logDebug, logWarn, logError } from 'pretty-logs';
+```
+
+You can play with this library at [pretty-logs sandbox](https://codesandbox.io/s/Bg39JKY5N).
+
 
 ## Motivation
 
