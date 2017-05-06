@@ -14,9 +14,6 @@ const pkg = require('../../package.json');
 
 const baseConfig = function() {
   return {
-    // https://webpack.js.org/concepts/targets/#components/sidebar/sidebar.jsx
-    target: 'node',
-
     // https://webpack.js.org/configuration/entry-context/
     entry: paths.app.entry,
 
