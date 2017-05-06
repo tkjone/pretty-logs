@@ -1,5 +1,8 @@
 ## Change Log
 
+### 0.1.9 (2017/05/06 18:41 +00:00)
+- [98ea8ab](https://github.com/tkjone/pretty-logs/commit/98ea8ab59b5218b30868c0911ce7b1184ab2836a) fix: Remove console logs from pretty-logs
+
 ### 0.1.8 (2017/05/06 18:29 +00:00)
 - Should bring us back to a working build - reverted `npm run build` back to a babel build system, rather than the webpack one.
 
