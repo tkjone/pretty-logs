@@ -36,7 +36,7 @@
  */
 
 // current version of this logging library
-const VERSION = '0.0.1';
+const VERSION = '0.1.8';
 
 /**
  * available log colors - purely a style thing and yes, the hex codes will not
@@ -186,6 +186,10 @@ function makeLogger(logName) {
     const isActiveLogLevel = DEFAULT_LEVEL <= levelValue;
 
     if (isActiveLogLevel) {
+      console.log(logName);
+      console.log(category);
+      console.log(message);
+      console.log(data);
       log(logName, category, message, data);
     }
   };
