@@ -31,44 +31,13 @@
  *       const VERSION = require('../package.json').version;
  */
 
+import {VERSION, COLORS, LEVEL, ICON} from './constants';
+
 /**
- * Contstants
+ *
+ * HELPERS
+ *
  */
-
-// current version of this logging library
-const VERSION = '0.1.8';
-
-/**
- * available log colors - purely a style thing and yes, the hex codes will not
- * work inside of the node environments.
- */
-const COLORS = {
-  PALE_VIOLET_RED: '#2724FA',
-  TRADE_WIND_GREEN: '#007867',
-  BLUSH_PINK: '#E69022',
-  IRIS_BLUE: '#FC1052',
-};
-
-/**
- * each log level is an array with three values:  name, value, color.  For
- * example, to acces the info name - the first index - you would write
- * LEVEL.INFO[0] // 'info'
-*/
-const LEVEL = {
-  INFO: ['info', 0, COLORS.PALE_VIOLET_RED],
-  DEBUG: ['debug', 10, COLORS.TRADE_WIND_GREEN],
-  WARN: ['warn', 20, COLORS.BLUSH_PINK],
-  ERROR: ['error', 30, COLORS.IRIS_BLUE],
-};
-
-/**
- * logging system default level - which levels to show in console
- * @type {number}
-*/
-const DEFAULT_LEVEL = getLevelValue(LEVEL.INFO);
-
-// Helpers
-// ============================================================================
 
 /**
  * getter used to access a levels human readable name
@@ -117,22 +86,39 @@ function isBrowser() {
   return typeof window !== 'undefined';
 }
 
+// Logging system default level - which levels to show in console
+export const DEFAULT_LEVEL = getLevelValue(LEVEL.INFO);
+
 /**
  * adds color and font-weight to a console log message
  * @param  {string} msg - the string you want to format
  * @param  {string} levelColor - a hexcode e.g. #D87392
  * @return {string}
 */
-function formatMsg(msg, levelColor) {
-  const theMsg = `%c ${msg}`;
-  const theStyles = `color: ${levelColor}; font-weight: bold;`;
-  const formattedMsg = [theMsg, theStyles];
+function formatMsg(msg, levelName) {
+  const lvl = LEVEL[levelName];
+  const message = `%c ${msg}`;
+  const icon = ICON[levelName];
+  const styles = [
+    `background-image: url( ${icon} )`,
+    'background-repeat: no-repeat',
+    'background-size: 13px 13px',
+    `color: ${getLevelColor(lvl)}`,
+    'font-weight: bold',
+    'display: block',
+    'margin-left: 5px',
+    'padding-left: 18px',
+  ].join(';');
+  const styledMessage = [message, styles];
 
-  return formattedMsg;
+  return styledMessage;
 }
 
-// Logging Suite
-// ============================================================================
+/**
+ *
+ * Logging Suite
+ *
+ */
 
 /**
  * format and process the log msg
@@ -149,8 +135,8 @@ function log(levelName, category, msg, data) {
   */
   const timestamp = new Date();
   const lvlColor = getLevelColor(LEVEL[levelName]);
-  const groupMsg = `[${levelName}] - ${category} - ${timestamp}`;
-  const formattedGroupMsg = formatMsg(groupMsg, lvlColor);
+  const groupMsg = `${category} - ${timestamp}`;
+  const formattedGroupMsg = formatMsg(groupMsg, levelName);
 
   // turn the msg into an object for cleaner reading and machine friendliness
   const logMsg = {category, msg, data};
@@ -197,8 +183,11 @@ export const logWarn = makeLogger('WARN');
 export const logError = makeLogger('ERROR');
 
 /**
- * exports
-*/
+ *
+ * Exports
+ *
+ */
+
 const logger = {
   VERSION,
 };
