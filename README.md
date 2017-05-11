@@ -20,6 +20,7 @@ This library is still under active development and the API is likely to change.
   * [Commit Message Conventions](#commit-message-conventions)
   * [Git Hooks](#git-hooks)
 * [Notes](#notes)
+* [Special Thanks](#special-thanks)
 
 ## Quickstart
 
@@ -164,3 +165,7 @@ We also have a pre-commit git hook, which runs when you run `git commit` locally
 This section just contains some knowledge that I acquired while developing/maintaining this library from an npm package perspective.  For example, running `npm version patch` will auto-incrememnt your package.json's `version` property.  Similiarly, you can swap `patch` for `minor` or `major`.  Very nice.
 
 If you notice the version in our package.json is `"version": "0.0.0-semantically-released"` this is because we are handling this process with [semantinc-release-cli](https://github.com/semantic-release/cli)
+
+## Special Thanks
+
+<div>Icons made by <a href="http://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
