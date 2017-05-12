@@ -42,6 +42,10 @@ We provide the following log levels
 import { logInfo, logDebug, logWarn, logError } from 'pretty-logs';
 ```
 
+and they will look like this:
+
+![pretty logs](pretty-logs.png)
+
 You can play with this library at [pretty-logs sandbox](https://codesandbox.io/s/Bg39JKY5N).
 
 
