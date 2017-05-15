@@ -1,5 +1,10 @@
 ## Change Log
 
+### 0.2.0 (2017/05/15 22:17 +00:00)
+- We added nicer colors and icons to improve the formatting.
+- [98413ea](https://github.com/tkjone/pretty-logs/commit/98413eae18d50dec2df72df6f427648b8e39de1a) Add example image of pretty logs to README (@tkjone)
+- [8276147](https://github.com/tkjone/pretty-logs/commit/82761478ebd7fc44512734d9eca12e29d26325ba) feature(format): Improved formatting (@tkjone)
+
 ### 0.1.9 (2017/05/06 18:41 +00:00)
 - [98ea8ab](https://github.com/tkjone/pretty-logs/commit/98ea8ab59b5218b30868c0911ce7b1184ab2836a) fix: Remove console logs from pretty-logs
 

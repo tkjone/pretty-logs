@@ -1,6 +1,6 @@
 {
   "name": "pretty-logs",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "Welcome to pretty-logs.  A logging tool to help developers create more informative logs.",
   "main": "dist/index.js",
   "repository": {
