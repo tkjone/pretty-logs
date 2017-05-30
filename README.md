@@ -16,7 +16,8 @@ This library is still under active development and the API is likely to change.
 * [Motivation](#motivation)
 * [Contributing](#contributing)
 * [Development](#development)
-* [Development](#development)
+  * [Quickstart](#quickstart)
+  * [npm scripts](#npm-scripts)
   * [Commit Message Conventions](#commit-message-conventions)
   * [Git Hooks](#git-hooks)
 * [Notes](#notes)
@@ -61,6 +62,40 @@ I am always happy to have people contribute to this project.  Please start by re
 
 ## Development
 
+### Quickstart
+
+**1. clone repo**
+
+```bash
+git clone git@github.com:tkjone/pretty-logs.git
+```
+
+**2. move into pretty-log directory**
+
+```bash
+cd ./path/to/pretty-logs
+```
+
+**3. install dev dependencies**
+
+```bash
+npm install
+```
+
+**4. sanity-check - run tests**
+
+```bash
+npm test
+```
+
+> Please note that the tests are super baren right now.  Step 4 is meant to illustrate a working project.
+
+From here, you can checkout `pretty-logs` in an example app to see what it looks like by moving into `examples/example-app` and than run `npm install` and `npm start`.  If you open the console you will see your nicely formatted logs.
+
+> The above works because we `npm link` pretty-logs.  See `package.json`.
+
+### NPM Scripts
+
 If you intend on running the `generate-changelog` command you will need to install `github-changes` globally first:
 
 ```bash
@@ -68,6 +103,7 @@ npm install github-changes -g
 ```
 
 After you have cloned this repo and installed the npm dependencies, it is a good practice to run `npm run validate`.  This script is going to run prettier and the tests.
+
 
 ### Commit Message Conventions
 
