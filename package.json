@@ -81,6 +81,11 @@
         "lines": 10,
         "statements": 10
       }
-    }
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/build/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/examples/"
+    ]
   }
 }
