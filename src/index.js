@@ -31,7 +31,7 @@
  *       const VERSION = require('../package.json').version;
  */
 
-import {VERSION, COLORS, LEVEL, ICON} from './constants';
+import {VERSION, COLORS, LEVEL, ICON, BROWSER} from './constants';
 
 /**
  *
@@ -97,19 +97,53 @@ export const DEFAULT_LEVEL = getLevelValue(LEVEL.INFO);
 */
 function formatMsg(msg, levelName) {
   const lvl = LEVEL[levelName];
-  const message = `%c ${msg}`;
   const icon = ICON[levelName];
-  const styles = [
-    `background-image: url( ${icon} )`,
-    'background-repeat: no-repeat',
-    'background-size: 13px 13px',
-    `color: ${getLevelColor(lvl)}`,
-    'font-weight: bold',
-    'display: block',
-    'margin-left: 5px',
-    'padding-left: 18px',
-  ].join(';');
-  const styledMessage = [message, styles];
+  let message;
+  let styles;
+  let otherStyles = '';
+
+  /**
+   * we are blocked by the browsers and the css properties they have whitelisted.
+   * In this scenario we have to handle different browsers unqiely.
+   */
+  switch (true) {
+    case BROWSER.IS_SAFARI:
+      message = `%c%c ${msg}`;
+
+      styles = [
+        `background-image: url( ${icon} )`,
+        'background-repeat: no-repeat',
+        'background-size: 15px 15px',
+        'padding-left: 15.2px',
+      ].join(';');
+      otherStyles = [
+        `color: ${getLevelColor(lvl)}`,
+        'font-weight: bold',
+        'display: block',
+        'padding-left: 15.2px',
+        'padding-top: .4px',
+      ].join(';');
+      break;
+
+    case BROWSER.IS_CHROME:
+      message = `%c ${msg}`;
+
+      styles = [
+        `background-image: url( ${icon} )`,
+        'background-repeat: no-repeat',
+        'background-size: 13px 13px',
+        `color: ${getLevelColor(lvl)}`,
+        'font-weight: bold',
+        'display: block',
+        'margin-left: 5px',
+        'padding-left: 18px',
+      ].join(';');
+      break;
+    default:
+      break;
+  }
+
+  const styledMessage = [message, styles, otherStyles];
 
   return styledMessage;
 }
