@@ -30,3 +30,11 @@ export const ICON = {
   WARN: 'https://d2mxuefqeaa7sj.cloudfront.net/s_B42BBC2344C9BB2EE28870D2EBB8AB9BA1BF5601EC50F1AABC788C3099EB7784_1494522371870_icon-warning.svg',
   ERROR: 'https://d2mxuefqeaa7sj.cloudfront.net/s_B42BBC2344C9BB2EE28870D2EBB8AB9BA1BF5601EC50F1AABC788C3099EB7784_1494522371866_icon-error.svg',
 };
+
+// detect browser user agents
+export const BROWSER = {
+  IS_CHROME: /Chrome/.test(navigator.userAgent),
+  IS_EXPLORER: navigator.userAgent.indexOf('MSIE') > -1,
+  IS_FIREFOX: navigator.userAgent.indexOf('Firefox') > -1,
+  IS_SAFARI: /Version/.test(navigator.userAgent),
+};
