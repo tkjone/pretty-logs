@@ -32,12 +32,9 @@ export const ICON = {
 };
 
 // detect browser user agents
-
-// var chrome   = navigator.userAgent.indexOf('Chrome') > -1;
-// var explorer = navigator.userAgent.indexOf('MSIE') > -1;
-// var firefox  = navigator.userAgent.indexOf('Firefox') > -1;
-// var safari   = navigator.userAgent.indexOf("Safari") > -1;
-// var camino   = navigator.userAgent.indexOf("Camino") > -1;
-// var opera    = navigator.userAgent.toLowerCase().indexOf("op") > -1;
-// if ((chrome) && (safari)) safari = false;
-// if (chrome && opera) chrome = false;
+export const BROWSER = {
+  IS_CHROME: /Chrome/.test(navigator.userAgent),
+  IS_EXPLORER: navigator.userAgent.indexOf('MSIE') > -1,
+  IS_FIREFOX: navigator.userAgent.indexOf('Firefox') > -1,
+  IS_SAFARI: /Version/.test(navigator.userAgent),
+};
