@@ -99,9 +99,22 @@ function formatMsg(msg, levelName) {
   const lvl = LEVEL[levelName];
   const message = `%c ${msg}`;
   const icon = ICON[levelName];
+
+  const safariMessage = `%c%c ${msg}`;
+  var safariStyles = [
+    `background-image: url( ${blah} )`,
+    'background-repeat: no-repeat',
+    'background-size: 15px 15px',
+    `color: blue`,
+    'font-weight: bold',
+    'display: block',
+    'padding-left: 15.2px',
+    'padding-top: .4px',
+  ].join(';');
+
   const styles = [
     `background-image: url( ${icon} )`,
-    'background-repeat: no-repeat',
+    'background-repeat: no-repeat, no-repeat',
     'background-size: 13px 13px',
     `color: ${getLevelColor(lvl)}`,
     'font-weight: bold',
@@ -109,6 +122,7 @@ function formatMsg(msg, levelName) {
     'margin-left: 5px',
     'padding-left: 18px',
   ].join(';');
+
   const styledMessage = [message, styles];
 
   return styledMessage;

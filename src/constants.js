@@ -30,3 +30,14 @@ export const ICON = {
   WARN: 'https://d2mxuefqeaa7sj.cloudfront.net/s_B42BBC2344C9BB2EE28870D2EBB8AB9BA1BF5601EC50F1AABC788C3099EB7784_1494522371870_icon-warning.svg',
   ERROR: 'https://d2mxuefqeaa7sj.cloudfront.net/s_B42BBC2344C9BB2EE28870D2EBB8AB9BA1BF5601EC50F1AABC788C3099EB7784_1494522371866_icon-error.svg',
 };
+
+// detect browser user agents
+
+// var chrome   = navigator.userAgent.indexOf('Chrome') > -1;
+// var explorer = navigator.userAgent.indexOf('MSIE') > -1;
+// var firefox  = navigator.userAgent.indexOf('Firefox') > -1;
+// var safari   = navigator.userAgent.indexOf("Safari") > -1;
+// var camino   = navigator.userAgent.indexOf("Camino") > -1;
+// var opera    = navigator.userAgent.toLowerCase().indexOf("op") > -1;
+// if ((chrome) && (safari)) safari = false;
+// if (chrome && opera) chrome = false;
