@@ -21,6 +21,7 @@ This library is still under active development and the API is likely to change.
   * [Git Commit Messages](#git-commit-messages)
   * [Git Rules](#git-rules)
   * [Git Hooks](#git-hooks)
+* [Related](#related)
 * [Notes](#notes)
 * [Special Thanks](#special-thanks)
 
@@ -214,6 +215,15 @@ These apply to git commit messages and pull requests
 ## Git Hooks
 
 We have a pre-commit git hook, which runs when you run `git commit` locally.  This hool runs prettier. Big thanks to [husky](https://github.com/typicode/husky) which help make this process very easy.
+
+# Related
+
+[console.js](https://github.com/icodeforlove/Console.js/blob/master/console.js)
+[console.style](https://github.com/daniellmb/console.style)
+[log](http://adamschwartz.co/log/)
+[log.js](https://github.com/adamschwartz/log/blob/master/log.js)
+[winston](https://github.com/winstonjs/winston)
+[log4js](https://github.com/stritti/log4js)
 
 # Notes
 
