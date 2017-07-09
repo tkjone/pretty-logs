@@ -194,7 +194,7 @@ function log(levelName, category, msg, data) {
   const dateTime = `${date}, ${time}`;
 
   const lvlColor = getLevelColor(LEVEL[levelName]);
-  const groupMsg = `${dateTime} - ${category}`;
+  const groupMsg = `${dateTime} - ${msg}`;
   const formattedGroupMsg = formatMsg(groupMsg, levelName);
 
   // turn the msg into an object for cleaner reading and machine friendliness
