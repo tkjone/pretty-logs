@@ -192,11 +192,11 @@ These apply to git commit messages and pull requests
 * All Feature work should be done on a feature branch
 * The **subject** of the git commit message and pull request, should NOT exceed 50 characters
 * The **body** of the git commit message should wrap the line at 80 characters
-* Always add the **Fixes <issue-number>** to the bottom of your pull requests body
+* Always add the **Fixes issue-number** to the bottom of your pull requests body - [example here](https://github.com/tkjone/pretty-logs/pull/11)
 * Git branch naming convention: `issue-6-descriptive-subject`
 * Pull request body text should have details summarizing the problem and why the change was made
 * Use a Pull Request whenever you want input from other developers.  Its not just for a completed piece of work
-* Be sure to avoid rebasing over your own commits when you have created a pull request.  The problem with this is that if someone left a comment on one of the files your rebased, those comments will be lost.
+* Be sure to avoid rebasing over your own commits when you have created a pull request.  The problem with this is that if someone left a comment on one of the files you rebased, those comments will be lost.
 
 ## Git Hooks
 
