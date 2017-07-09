@@ -189,8 +189,12 @@ function formatMsg(msg, levelName) {
 function log(levelName, category, msg, data) {
   // setup
   const timestamp = new Date();
+  const date = timestamp.toLocaleDateString();
+  const time = timestamp.toLocaleTimeString();
+  const dateTime = `${date}, ${time}`;
+
   const lvlColor = getLevelColor(LEVEL[levelName]);
-  const groupMsg = `${category} - ${timestamp}`;
+  const groupMsg = `${dateTime} - ${msg}`;
   const formattedGroupMsg = formatMsg(groupMsg, levelName);
 
   // turn the msg into an object for cleaner reading and machine friendliness
