@@ -1,3 +1,7 @@
+# osx
+.DS_Store
+
+# javascript
 node_modules
 coverage
 dist
