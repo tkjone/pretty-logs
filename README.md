@@ -198,6 +198,7 @@ These apply to git commit messages and pull requests
 * Pull request body text should have details summarizing the problem and why the change was made
 * Use a Pull Request whenever you want input from other developers.  Its not just for a completed piece of work
 * Be sure to avoid rebasing over your own commits when you have created a pull request.  The problem with this is that if someone left a comment on one of the files you rebased, those comments will be lost.
+* When merging a Pull Request, we use [squash and merge](https://help.github.com/articles/about-pull-request-merges/)
 
 ## Git Hooks
 
