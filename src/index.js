@@ -79,6 +79,15 @@ function isNode() {
 }
 
 /**
+ * sets an alternative logging format for browser which have inconsistent
+ * support for the console API
+ * @return {boolean}
+ */
+function isSafeMode() {
+  return BROWSER.IS_FIREFOX || BROWSER.IS_EXPLORER;
+}
+
+/**
  * check whether or not the environment is the browser
  * @return {boolean}
 */
@@ -139,7 +148,19 @@ function formatMsg(msg, levelName) {
         'padding-left: 18px',
       ].join(';');
       break;
+
+    case BROWSER.IS_FIREFOX:
+      message = `%c ${msg}`;
+
+      styles = [
+        `color: ${getLevelColor(lvl)}`,
+        'font-weight: bold',
+        'display: block',
+        'margin-left: -6px', // line up subject and data logged
+      ].join(';');
+      break;
     default:
+      console.error('pretty-logs could not identify the browser');
       break;
   }
 
@@ -155,7 +176,10 @@ function formatMsg(msg, levelName) {
  */
 
 /**
- * format and process the log msg
+ * format and process the log msg:
+ *
+ *     API - Thu Jan 05 2017 16:22:08 GMT-0500 (EST)
+ *
  * @param {string} levelName - 'INFO', 'DEBUG', 'WARN', 'ERROR'
  * @param {string} category - log category e.g. API, REQUEST etc
  * @param {string} msg - helpful human readable message to log
@@ -163,10 +187,7 @@ function formatMsg(msg, levelName) {
  * @example log('INFO', 'API', 'This is an API request', {...});
 */
 function log(levelName, category, msg, data) {
-  /**
-   * the following will generate a message that looks like this:
-   * [ info ] - API - Thu Jan 05 2017 16:22:08 GMT-0500 (EST)
-  */
+  // setup
   const timestamp = new Date();
   const lvlColor = getLevelColor(LEVEL[levelName]);
   const groupMsg = `${category} - ${timestamp}`;
@@ -177,7 +198,11 @@ function log(levelName, category, msg, data) {
   const logMsgAsJson = JSON.stringify(logMsg);
 
   // log to the console
-  if (isBrowser) {
+  if (isBrowser && isSafeMode) {
+    console.log(...formattedGroupMsg);
+    console.log(logMsg);
+    console.log(''); // clear separation of one log to another
+  } else if (isBrowser) {
     console.groupCollapsed(...formattedGroupMsg);
     console.log(logMsg);
     console.groupEnd();

@@ -50,6 +50,17 @@ and they will look like this:
 
 You can play with this library at [pretty-logs sandbox](https://codesandbox.io/s/Bg39JKY5N).
 
+**NOTE:**
+
+The above will work very well on Safari and Chrome, however, Firefox and IE/Edge are inconsistent.  As a result, we have added a safe mode for these inconsistent browsers.  The safe mode will render like this:
+
+**FireFox (54)**
+
+![pretty logs firefox](pretty-logs-firefox.png)
+
+**FireFox Developer Edition**
+
+![pretty logs firefox developer edition](pretty-logs-firefox-deve.png)
 
 # Motivation
 
