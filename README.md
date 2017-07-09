@@ -191,6 +191,7 @@ These apply to git commit messages and pull requests
 
 * All Feature work should be done on a feature branch
 * The **subject** of the git commit message and pull request, should NOT exceed 50 characters
+* The first word of the Subject, after the issue number, should be capitalized
 * The **body** of the git commit message should wrap the line at 80 characters
 * Always add the **Fixes issue-number** to the bottom of your pull requests body - [example here](https://github.com/tkjone/pretty-logs/pull/11)
 * Git branch naming convention: `issue-6-descriptive-subject`
