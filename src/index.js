@@ -31,7 +31,7 @@
  *       const VERSION = require('../package.json').version;
  */
 
-import {VERSION, COLORS, LEVEL, ICON, BROWSER} from './constants';
+import { VERSION, COLORS, LEVEL, ICON, BROWSER } from './constants';
 
 /**
  *
@@ -114,14 +114,14 @@ function formatMsg(msg, levelName) {
         `background-image: url( ${icon} )`,
         'background-repeat: no-repeat',
         'background-size: 15px 15px',
-        'padding-left: 15.2px',
+        'padding-left: 15.2px'
       ].join(';');
       otherStyles = [
         `color: ${getLevelColor(lvl)}`,
         'font-weight: bold',
         'display: block',
         'padding-left: 15.2px',
-        'padding-top: .4px',
+        'padding-top: .4px'
       ].join(';');
       break;
 
@@ -136,11 +136,11 @@ function formatMsg(msg, levelName) {
         'font-weight: bold',
         'display: block',
         'margin-left: 5px',
-        'padding-left: 18px',
+        'padding-left: 18px'
       ].join(';');
       break;
     default:
-      break;
+      console.error('pretty-logs could not identify the browser');
   }
 
   const styledMessage = [message, styles, otherStyles];
@@ -173,7 +173,7 @@ function log(levelName, category, msg, data) {
   const formattedGroupMsg = formatMsg(groupMsg, levelName);
 
   // turn the msg into an object for cleaner reading and machine friendliness
-  const logMsg = {category, msg, data};
+  const logMsg = { category, msg, data };
   const logMsgAsJson = JSON.stringify(logMsg);
 
   // log to the console
@@ -223,7 +223,7 @@ export const logError = makeLogger('ERROR');
  */
 
 const logger = {
-  VERSION,
+  VERSION
 };
 
 export default logger;
