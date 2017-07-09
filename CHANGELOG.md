@@ -1,5 +1,8 @@
 ## Change Log
 
+### 0.4.2 (2017/06/09 22:17 +00:00)
+- Improve [default message formatting](https://github.com/tkjone/pretty-logs/pull/19)
+
 ### 0.4.1 (2017/06/09 22:17 +00:00)
 - Reduced dist package size by over 50%
 
