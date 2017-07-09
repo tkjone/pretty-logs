@@ -59,7 +59,8 @@
   "babel": {
     "presets": [
       "es2015"
-    ]
+    ],
+    "comments": false
   },
   "eslintConfig": {
     "parserOptions": {
