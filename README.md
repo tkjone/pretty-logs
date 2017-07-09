@@ -15,10 +15,11 @@ This library is still under active development and the API is likely to change.
 * [Usage](#usage)
 * [Motivation](#motivation)
 * [Contributing](#contributing)
-* [Development](#development)
   * [Getting Started](#getting-started)
-  * [npm scripts](#npm-scripts)
-  * [Commit Message Conventions](#commit-message-conventions)
+  * [scripts](#scripts)
+  * [Git Workflow](#git-workflow)
+  * [Git Commit Messages](#git-commit-messages)
+  * [Git Rules](#git-rules)
   * [Git Hooks](#git-hooks)
 * [Notes](#notes)
 * [Special Thanks](#special-thanks)
@@ -60,8 +61,6 @@ wanted to work with open source projects and attempt to maintain my own.
 
 I am always happy to have people contribute to this project.  Please start by reading this projects code of conduct.
 
-# Development
-
 ## Getting Started
 
 **1. clone repo**
@@ -94,7 +93,7 @@ From here, you can checkout `pretty-logs` in an example app to see what it looks
 
 > The above works because we `npm link` pretty-logs.  See `package.json`.
 
-## NPM Scripts
+## Scripts
 
 If you intend on running the `generate-changelog` command you will need to install `github-changes` globally first:
 
