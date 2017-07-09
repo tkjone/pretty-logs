@@ -31,7 +31,7 @@
  *       const VERSION = require('../package.json').version;
  */
 
-import {VERSION, COLORS, LEVEL, ICON, BROWSER} from './constants';
+import { VERSION, COLORS, LEVEL, ICON, BROWSER } from './constants';
 
 /**
  *
@@ -123,14 +123,14 @@ function formatMsg(msg, levelName) {
         `background-image: url( ${icon} )`,
         'background-repeat: no-repeat',
         'background-size: 15px 15px',
-        'padding-left: 15.2px',
+        'padding-left: 15.2px'
       ].join(';');
       otherStyles = [
         `color: ${getLevelColor(lvl)}`,
         'font-weight: bold',
         'display: block',
         'padding-left: 15.2px',
-        'padding-top: .4px',
+        'padding-top: .4px'
       ].join(';');
       break;
 
@@ -145,7 +145,7 @@ function formatMsg(msg, levelName) {
         'font-weight: bold',
         'display: block',
         'margin-left: 5px',
-        'padding-left: 18px',
+        'padding-left: 18px'
       ].join(';');
       break;
 
@@ -156,7 +156,7 @@ function formatMsg(msg, levelName) {
         `color: ${getLevelColor(lvl)}`,
         'font-weight: bold',
         'display: block',
-        'margin-left: -6px', // line up subject and data logged
+        'margin-left: -6px' // line up subject and data logged
       ].join(';');
       break;
     default:
@@ -189,12 +189,16 @@ function formatMsg(msg, levelName) {
 function log(levelName, category, msg, data) {
   // setup
   const timestamp = new Date();
+  const date = timestamp.toLocaleDateString();
+  const time = timestamp.toLocaleTimeString();
+  const dateTime = `${date}, ${time}`;
+
   const lvlColor = getLevelColor(LEVEL[levelName]);
-  const groupMsg = `${category} - ${timestamp}`;
+  const groupMsg = `${dateTime} - ${category}`;
   const formattedGroupMsg = formatMsg(groupMsg, levelName);
 
   // turn the msg into an object for cleaner reading and machine friendliness
-  const logMsg = {category, msg, data};
+  const logMsg = { category, msg, data };
   const logMsgAsJson = JSON.stringify(logMsg);
 
   // log to the console
@@ -248,7 +252,7 @@ export const logError = makeLogger('ERROR');
  */
 
 const logger = {
-  VERSION,
+  VERSION
 };
 
 export default logger;
