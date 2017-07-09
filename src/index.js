@@ -198,11 +198,11 @@ function log(levelName, category, msg, data) {
   const logMsgAsJson = JSON.stringify(logMsg);
 
   // log to the console
-  if (isBrowser && isSafeMode) {
+  if (isBrowser() && isSafeMode()) {
     console.log(...formattedGroupMsg);
     console.log(logMsg);
     console.log(''); // clear separation of one log to another
-  } else if (isBrowser) {
+  } else if (isBrowser()) {
     console.groupCollapsed(...formattedGroupMsg);
     console.log(logMsg);
     console.groupEnd();
