@@ -1,5 +1,9 @@
 ## Change Log
 
+### 0.3.0 (2017/06/09 22:17 +00:00)
+- Add support for [Safari](https://github.com/tkjone/pretty-logs/pull/11) and [Firefox](https://github.com/tkjone/pretty-logs/pull/16)
+- Add safe mode for broswers which have an inconsistent console API
+
 ### 0.2.0 (2017/05/15 22:17 +00:00)
 - We added nicer colors and icons to improve the formatting.
 - [98413ea](https://github.com/tkjone/pretty-logs/commit/98413eae18d50dec2df72df6f427648b8e39de1a) Add example image of pretty logs to README (@tkjone)
