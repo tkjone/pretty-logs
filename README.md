@@ -9,7 +9,7 @@ Welcome to `pretty-logs`.  `pretty-logs` is a JavaScript logging tool.
 
 **WARNING:**
 
-This library is still under active development and the API is likely to change.
+This library is still under active development and the API is likely to change.  This was evidenced in the jumpt form `0.4.2` to `0.5.0`.
 
 * [Quickstart](#quickstart)
 * [Usage](#usage)
@@ -34,18 +34,18 @@ npm install pretty-logs
 # Usage
 
 ```js
-import { logError } from 'pretty-logs';
+import plog from 'pretty-logs';
 
-logError('Auth', 'Login failed', { email: user.email });
+plog({level: 'debug'}, message: 'Login debug', extra: {category: 'AUTH'});
+
+plog({level: 'info'}, message: 'Login info', extra: {category: 'AUTH'});
+
+plog({level: 'warn'}, message: 'Login warn', extra: {category: 'AUTH'});
+
+plog({level: 'error'}, message: 'Login error', extra: {category: 'AUTH'});
 ```
 
-We provide the following log levels
-
-```js
-import { logInfo, logDebug, logWarn, logError } from 'pretty-logs';
-```
-
-and they will look like this:
+Here is how the above looks in the console
 
 ![pretty logs](examples/assets/pretty-logs.png)
 
