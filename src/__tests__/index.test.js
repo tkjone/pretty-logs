@@ -1,5 +1,5 @@
-import logger from '../index.js';
+import plog, {VERSION} from '../index.js';
 
 test('logger', () => {
-  expect(logger.VERSION).toBe('0.1.8');
+  expect(VERSION).toBe('0.5.0');
 });
