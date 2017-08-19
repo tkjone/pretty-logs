@@ -36,13 +36,13 @@ npm install pretty-logs
 ```js
 import plog from 'pretty-logs';
 
-plog({level: 'debug'}, message: 'Login debug', extra: {category: 'AUTH'});
+plog({ level: 'debug', message: 'Login debug', extra: { category: 'AUTH' }});
 
-plog({level: 'info'}, message: 'Login info', extra: {category: 'AUTH'});
+plog({ level: 'info' , message: 'Login info', extra: { category: 'AUTH' }});
 
-plog({level: 'warn'}, message: 'Login warn', extra: {category: 'AUTH'});
+plog({ level: 'warn' , message: 'Login warn', extra: { category: 'AUTH' }});
 
-plog({level: 'error'}, message: 'Login error', extra: {category: 'AUTH'});
+plog({ level: 'error' , message: 'Login error', extra: { category: 'AUTH' }});
 ```
 
 Here is how the above looks in the console
