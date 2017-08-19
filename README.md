@@ -9,7 +9,7 @@ Welcome to `pretty-logs`.  `pretty-logs` is a JavaScript logging tool.
 
 **WARNING:**
 
-This library is still under active development and the API is likely to change.  This was evidenced in the jumpt form `0.4.2` to `0.5.0`.
+This library is still under active development and the API is likely to change.  This was evidenced in the jump form `0.4.2` to `0.5.0`.
 
 * [Quickstart](#quickstart)
 * [Usage](#usage)
