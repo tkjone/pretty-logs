@@ -47,7 +47,7 @@ import { logInfo, logDebug, logWarn, logError } from 'pretty-logs';
 
 and they will look like this:
 
-![pretty logs](pretty-logs.png)
+![pretty logs](examples/assets/pretty-logs.png)
 
 You can play with this library at [pretty-logs sandbox](https://codesandbox.io/s/Bg39JKY5N).
 
@@ -57,11 +57,11 @@ The above will work very well on Safari and Chrome, however, Firefox and IE/Edge
 
 **FireFox (54)**
 
-![pretty logs firefox](pretty-logs-firefox.png)
+![pretty logs firefox](examples/assets/pretty-logs-firefox.png)
 
 **FireFox Developer Edition**
 
-![pretty logs firefox developer edition](pretty-logs-firefox-deve.png)
+![pretty logs firefox developer edition](examples/assets/pretty-logs-firefox-deve.png)
 
 # Motivation
 

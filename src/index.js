@@ -2,257 +2,194 @@
  *
  * Pretty-Logger
  *
- * a simple logging library to make it easier for developers to log.  With this
- * library we want to achieve the following:
- *
- * 1.  pretty (read: human readable) console logs
- * 2.  informative console logs
- * 3.  control when, where and how console logs appear
- *
- * There are several libraries that already do this, however, unless there is
- * a must have feature that would be too difficult to implement ourselves, it
- * is very easy to roll out our own which give us 100% control over what and
- * how we log.
- *
- * This logging library supports latest browsers.  It will be very easy to make
- * it node compatible, but we are focusing this as
- * a front-end tool for the time being
- *
- * the log levels are as follows:
- *
- * info  : interesting to support stuff - read like prose
- * debug : interesting to developers - read in a way that is helpful
- * warn  : tell us a potential mistake we have made and how to resolve
- * error : tell us about a mistake that has happened and how to resolve
- *
- * @todo reduce the info, debug, warn and error function to a factory
- * @todo the VERSION should probably come from a package.json file.  We can acquire
- *       the version from the package.json by using a line like this:
- *       const VERSION = require('../package.json').version;
- */
-
-import {VERSION, COLORS, LEVEL, ICON, BROWSER} from './constants';
-
-/**
- *
- * HELPERS
- *
  */
 
 /**
- * getter used to access a levels human readable name
- * @param {array} level - LEVEL.INFO
-*/
-function getLevelName(level) {
-  const name = level[0];
-  const capitalizedName = name.toUpperCase();
+ * Constants
+ * ============================================================================
+ */
 
-  return capitalizedName;
-}
+export const VERSION = '0.5.0';
+
+// control which logs render
+const DEFAULT_LEVEL = 0;
+
+// Available log colors - hex codes will not work in node environments
+const COLORS = {
+  PALE_CORNFLOWER_BLUE: '#AECEEB',
+  TRADE_WIND_GREEN: '#63ADA8',
+  GIMBLET_YELLOW: '#BEA85F',
+  MY_PINK: '#DF8984',
+};
+
+// detect browser user agents
+const BROWSER = {
+  IS_CHROME: /Chrome/.test(navigator.userAgent),
+  IS_EXPLORER: navigator.userAgent.indexOf('MSIE') > -1,
+  IS_FIREFOX: navigator.userAgent.indexOf('Firefox') > -1,
+  IS_SAFARI: /Version/.test(navigator.userAgent),
+};
+
+const ICON = {
+  INFO: 'https://d2mxuefqeaa7sj.cloudfront.net/s_B42BBC2344C9BB2EE28870D2EBB8AB9BA1BF5601EC50F1AABC788C3099EB7784_1494522371868_icon-info.svg',
+  DEBUG: 'https://d2mxuefqeaa7sj.cloudfront.net/s_B42BBC2344C9BB2EE28870D2EBB8AB9BA1BF5601EC50F1AABC788C3099EB7784_1494522371864_icon-bug.svg',
+  WARN: 'https://d2mxuefqeaa7sj.cloudfront.net/s_B42BBC2344C9BB2EE28870D2EBB8AB9BA1BF5601EC50F1AABC788C3099EB7784_1494522371870_icon-warning.svg',
+  ERROR: 'https://d2mxuefqeaa7sj.cloudfront.net/s_B42BBC2344C9BB2EE28870D2EBB8AB9BA1BF5601EC50F1AABC788C3099EB7784_1494522371866_icon-error.svg',
+};
+
+const logConfig = {
+  info: {
+    color: COLORS.PALE_CORNFLOWER_BLUE, // #hexcode
+    value: '1',
+    icon: ICON.INFO,
+  },
+  debug: {
+    color: COLORS.TRADE_WIND_GREEN, // #hexcode
+    value: '0',
+    icon: ICON.DEBUG,
+  },
+  warn: {
+    color: COLORS.GIMBLET_YELLOW, // #hexcode
+    value: '2',
+    icon: ICON.WARN,
+  },
+  error: {
+    color: COLORS.PALE_CORNFLOWER_BLUE, // #hexcode
+    value: '3',
+    icon: ICON.ERROR,
+  },
+};
 
 /**
- * getter used to access a levels numeric value
- * @param {array} level - LEVEL.INFO
-*/
-function getLevelValue(level) {
-  const value = level[1];
+ * Helpers
+ * ============================================================================
+ */
 
-  return value;
-}
+const setSafariStyleSetOne = ({icon}) =>
+  [
+    `background-image: url( ${icon} )`,
+    'background-repeat: no-repeat',
+    'background-size: 15px 15px',
+    'padding-left: 15.2px',
+  ].join(';');
 
-/**
- * getter used to access a levels color value
- * @param {array} level - LEVEL.INFO
-*/
-function getLevelColor(level) {
-  const color = level[2];
+const setSafariStyleSetTwo = ({color}) =>
+  [
+    `color: ${color}`,
+    'font-weight: bold',
+    'display: block',
+    'padding-left: 15.2px',
+    'padding-top: .4px',
+  ].join(';');
 
-  return color;
-}
+const setChromeStyleSetOne = ({icon, color}) =>
+  [
+    `background-image: url(${icon}) `,
+    'background-repeat: no-repeat',
+    'background-size: 13px 13px',
+    `color: ${color} `,
+    'font-weight: bold',
+    'display: block',
+    'margin-left: 5px',
+    'padding-left: 18px',
+  ].join(';');
 
-/**
- * check whether or not the environment is node
- * @return {boolean}
-*/
+const setFirefoxStyleSetOne = ({color}) =>
+  [
+    `color: ${color} `,
+    'font-weight: bold',
+    'display: block',
+    'margin-left: -6px', // line up subject and data logged
+  ].join(';');
+
+// check for node environment
 function isNode() {
   return typeof module !== 'undefined' && typeof module.exports !== 'undefined';
 }
 
-/**
- * sets an alternative logging format for browser which have inconsistent
- * support for the console API
- * @return {boolean}
- */
-function isSafeMode() {
-  return BROWSER.IS_FIREFOX || BROWSER.IS_EXPLORER;
-}
-
-/**
- * check whether or not the environment is the browser
- * @return {boolean}
-*/
+// check logging environment
 function isBrowser() {
   return typeof window !== 'undefined';
 }
 
-// Logging system default level - which levels to show in console
-export const DEFAULT_LEVEL = getLevelValue(LEVEL.INFO);
-
-/**
- * adds color and font-weight to a console log message
- * @param  {string} msg - the string you want to format
- * @param  {string} levelColor - a hexcode e.g. #D87392
- * @return {string}
-*/
-function formatMsg(msg, levelName) {
-  const lvl = LEVEL[levelName];
-  const icon = ICON[levelName];
-  let message;
-  let styles;
-  let otherStyles = '';
-
-  /**
-   * we are blocked by the browsers and the css properties they have whitelisted.
-   * In this scenario we have to handle different browsers unqiely.
-   */
-  switch (true) {
-    case BROWSER.IS_SAFARI:
-      message = `%c%c ${msg}`;
-
-      styles = [
-        `background-image: url( ${icon} )`,
-        'background-repeat: no-repeat',
-        'background-size: 15px 15px',
-        'padding-left: 15.2px',
-      ].join(';');
-      otherStyles = [
-        `color: ${getLevelColor(lvl)}`,
-        'font-weight: bold',
-        'display: block',
-        'padding-left: 15.2px',
-        'padding-top: .4px',
-      ].join(';');
-      break;
-
-    case BROWSER.IS_CHROME:
-      message = `%c ${msg}`;
-
-      styles = [
-        `background-image: url( ${icon} )`,
-        'background-repeat: no-repeat',
-        'background-size: 13px 13px',
-        `color: ${getLevelColor(lvl)}`,
-        'font-weight: bold',
-        'display: block',
-        'margin-left: 5px',
-        'padding-left: 18px',
-      ].join(';');
-      break;
-
-    case BROWSER.IS_FIREFOX:
-      message = `%c ${msg}`;
-
-      styles = [
-        `color: ${getLevelColor(lvl)}`,
-        'font-weight: bold',
-        'display: block',
-        'margin-left: -6px', // line up subject and data logged
-      ].join(';');
-      break;
-    default:
-      console.error('pretty-logs could not identify the browser');
-      break;
-  }
-
-  const styledMessage = [message, styles, otherStyles];
-
-  return styledMessage;
+// safer logging formatter check - firefox and safari inconsistent style support
+function isSafeMode() {
+  return BROWSER.IS_FIREFOX || BROWSER.IS_EXPLORER;
 }
 
-/**
- *
- * Logging Suite
- *
- */
+// make the message pretty
+const styleMessage = (string, level) => {
+  let msg;
+  let styleSetOne;
+  let styleSetTwo;
+  const icon = logConfig[level].icon;
+  const color = logConfig[level].color;
 
-/**
- * format and process the log msg:
- *
- *     API - Thu Jan 05 2017 16:22:08 GMT-0500 (EST)
- *
- * @param {string} levelName - 'INFO', 'DEBUG', 'WARN', 'ERROR'
- * @param {string} category - log category e.g. API, REQUEST etc
- * @param {string} msg - helpful human readable message to log
- * @param {object} data - additional data
- * @example log('INFO', 'API', 'This is an API request', {...});
-*/
-function log(levelName, category, msg, data) {
-  // setup
+  switch (true) {
+    case BROWSER.IS_SAFARI:
+      msg = `%c %c ${string} `;
+      styleSetOne = setSafariStyleSetOne({icon});
+      styleSetTwo = setSafariStyleSetTwo({color});
+
+      return [msg, styleSetOne, styleSetTwo];
+
+    case BROWSER.IS_CHROME:
+      msg = `%c ${string} `;
+      styleSetOne = setChromeStyleSetOne({icon, color});
+
+      return [msg, styleSetOne];
+
+    case BROWSER.IS_FIREFOX:
+      msg = `%c ${string} `;
+      styleSetOne = setFirefoxStyleSetOne({icon});
+
+      return [msg, styleSetOne];
+
+    default:
+      console.error('pretty-logs could not identify browser');
+      break;
+  }
+};
+
+// formatted date-time stamp
+const setDateTime = () => {
   const timestamp = new Date();
   const date = timestamp.toLocaleDateString();
   const time = timestamp.toLocaleTimeString();
-  const dateTime = `${date}, ${time}`;
+  const dateTime = `${date}, ${time} `;
 
-  const lvlColor = getLevelColor(LEVEL[levelName]);
-  const groupMsg = `${dateTime} - ${msg}`;
-  const formattedGroupMsg = formatMsg(groupMsg, levelName);
-
-  // turn the msg into an object for cleaner reading and machine friendliness
-  const logMsg = {category, msg, data};
-  const logMsgAsJson = JSON.stringify(logMsg);
-
-  // log to the console
-  if (isBrowser() && isSafeMode()) {
-    console.log(...formattedGroupMsg);
-    console.log(logMsg);
-    console.log(''); // clear separation of one log to another
-  } else if (isBrowser()) {
-    console.groupCollapsed(...formattedGroupMsg);
-    console.log(logMsg);
-    console.groupEnd();
-  }
-}
-
-/**
- * This is a helper method to reduce boilerplate.  The idea is that we use this
- * to generate logging functions which are functions that log a specific level.
- * for example, if you create log = makeLogger('LOG') you can then call it like
- * this:
- *
- * @example
- *  const logInfo = makeLogger('INFO');
- *  logInfo('API', 'This is an API request', {...});
- *
- * this is going to be an internal tool, the enduser will only be responsible
- * for creating some additional log levels if needed and then we will handle
- * the generation of these methods on our end.  I believe this is a strong idea
- * as it make this library very much data driven.
-*/
-
-function makeLogger(logName) {
-  return function(category, message, data) {
-    const levelValue = getLevelValue(LEVEL[logName]);
-    const isActiveLogLevel = DEFAULT_LEVEL <= levelValue;
-
-    if (isActiveLogLevel) {
-      log(logName, category, message, data);
-    }
-  };
-}
-
-export const logInfo = makeLogger('INFO');
-export const logDebug = makeLogger('DEBUG');
-export const logWarn = makeLogger('WARN');
-export const logError = makeLogger('ERROR');
-
-/**
- *
- * Exports
- *
- */
-
-const logger = {
-  VERSION,
+  return dateTime;
 };
 
-export default logger;
+/**
+ * Loggers
+ * ============================================================================
+ */
+
+// logs
+const log = (subject, details, type) => {
+  console[type](...subject);
+  console.log(details);
+  if (type === 'groupCollapsed') {
+    console.groupEnd();
+  } else {
+    console.log('');
+  }
+};
+
+// logger
+const plog = ({level, message, extra}) => {
+  const _msg = `${setDateTime()} - message`;
+  const subject = styleMessage(_msg, level);
+  const details = {level, message, extra};
+
+  if (isBrowser() && isSafeMode()) {
+    log(subject, details, 'log');
+  } else if (isBrowser()) {
+    log(subject, details, 'groupCollapsed');
+  } else {
+    console.error('pretty-logs does not recognize this environment');
+  }
+};
+
+export default plog;
