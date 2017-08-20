@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { logInfo, logDebug, logWarn, logError } from 'pretty-logs/src/index';
+import plog from 'pretty-logs/src/index';
 
 class App extends Component {
   render() {
-    logInfo('CATEGORY', 'This is a message', {});
-    logDebug('CATEGORY', 'This is a message', {});
-    logWarn('CATEGORY', 'This is a message', {});
-    logError('CATEGORY', 'This is a message', {});
+    plog({
+      level: 'debug',
+      message: 'Login debug',
+      extra: { category: 'AUTH' }
+    });
 
     return (
       <div className="App">
