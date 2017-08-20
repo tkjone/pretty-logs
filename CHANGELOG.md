@@ -1,5 +1,8 @@
 ## Change Log
 
+### 0.5.1 (2017/08/20 18:35 +00:00)
+- [#28](https://github.com/tkjone/pretty-logs/pull/28) issue #27 Resolve regression and darken blue (#28) (@tkjone)
+
 ### 0.5.0 (2017/08/19 16:21 +00:00)
 - [#25](https://github.com/tkjone/pretty-logs/pull/25) issue #21 Update README (#25) (@tkjone)
 - [#24](https://github.com/tkjone/pretty-logs/pull/24) issue #21 Simplify API (#24) (@tkjone)
