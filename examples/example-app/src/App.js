@@ -10,6 +10,21 @@ class App extends Component {
       message: 'Login debug',
       extra: { category: 'AUTH' }
     });
+    plog({
+      level: 'info',
+      message: 'Login debug',
+      extra: { category: 'AUTH' }
+    });
+    plog({
+      level: 'warn',
+      message: 'Login debug',
+      extra: { category: 'AUTH' }
+    });
+    plog({
+      level: 'error',
+      message: 'Login debug',
+      extra: { category: 'AUTH' }
+    });
 
     return (
       <div className="App">
