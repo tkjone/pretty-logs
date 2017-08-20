@@ -16,7 +16,7 @@ const DEFAULT_LEVEL = 0;
 
 // Available log colors - hex codes will not work in node environments
 const COLORS = {
-  PALE_CORNFLOWER_BLUE: '#AECEEB',
+  CURIOUS_BLUE: '#268BD2',
   TRADE_WIND_GREEN: '#63ADA8',
   GIMBLET_YELLOW: '#BEA85F',
   MY_PINK: '#DF8984',
@@ -39,7 +39,7 @@ const ICON = {
 
 const logConfig = {
   info: {
-    color: COLORS.PALE_CORNFLOWER_BLUE, // #hexcode
+    color: COLORS.CURIOUS_BLUE, // #hexcode
     value: '1',
     icon: ICON.INFO,
   },
@@ -54,7 +54,7 @@ const logConfig = {
     icon: ICON.WARN,
   },
   error: {
-    color: COLORS.PALE_CORNFLOWER_BLUE, // #hexcode
+    color: COLORS.MY_PINK, // #hexcode
     value: '3',
     icon: ICON.ERROR,
   },
