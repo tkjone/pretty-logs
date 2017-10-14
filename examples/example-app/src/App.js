@@ -1,30 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import plog from 'pretty-logs/src/index';
+import {p} from 'pretty-logs/src/index';
 
 class App extends Component {
   render() {
-    plog({
-      level: 'debug',
-      message: 'Login debug',
-      extra: { category: 'AUTH' }
-    });
-    plog({
-      level: 'info',
-      message: 'Login debug',
-      extra: { category: 'AUTH' }
-    });
-    plog({
-      level: 'warn',
-      message: 'Login debug',
-      extra: { category: 'AUTH' }
-    });
-    plog({
-      level: 'error',
-      message: 'Login debug',
-      extra: { category: 'AUTH' }
-    });
+    // I am a function, which returns a console.log that know about the args below
+    p.log({msg: "Registration failed", "details": {}});
+    p.warn('warning hello')
+    p.err('error warning')
 
     return (
       <div className="App">

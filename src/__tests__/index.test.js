@@ -1,5 +1,24 @@
-import plog, {VERSION} from '../index.js';
+import { p } from "../index.js";
 
-test('logger', () => {
-  expect(VERSION).toBe('0.5.0');
+describe("The p library", () => {
+
+  describe("With default settings", () => {
+
+    it('should log info', () => {
+      p.log('info')
+      expect(console.log).toBeCalled()
+    });
+
+    it('should log warn', () => {
+      p.warn('warn')
+      expect(console.warn).toBeCalled()
+    });
+
+    it('should log err', () => {
+      p.err('error')
+      expect(console.error).toBeCalled()
+    });
+
+  })
+
 });

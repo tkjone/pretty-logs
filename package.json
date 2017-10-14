@@ -87,6 +87,9 @@
       "<rootDir>/build/",
       "<rootDir>/node_modules/",
       "<rootDir>/examples/"
+    ],
+    "setupFiles": [
+      "<rootDir>/tools/jest/setupGlobals.js"
     ]
   }
 }
